@@ -17,7 +17,7 @@ module.exports = {
       // Used by the Sortable component
       _isPlaceholder: false,
       _isDragging: false,
-      classes: []
+      sortableClassName: []
     }
   },
   handleSortableItemMouseDown: function(e) {
@@ -59,7 +59,7 @@ module.exports = {
       'is-dragging': this.props._isDragging,
       'is-undraggable': !this.props.isDraggable,
       'is-placeholder': this.props._isPlaceholder,
-      this.props.classes
+      this.props.sortableClassName
     });
     return React.cloneElement(
       this.props._isPlaceholder && this.getPlaceholderContent && Object.prototype.toString.call(this.getPlaceholderContent) === '[object Function]'
