@@ -16,7 +16,8 @@ module.exports = {
       isDraggable: true,
       // Used by the Sortable component
       _isPlaceholder: false,
-      _isDragging: false
+      _isDragging: false,
+      classes: []
     }
   },
   handleSortableItemMouseDown: function(e) {
@@ -57,7 +58,8 @@ module.exports = {
       'SortableItem': true,
       'is-dragging': this.props._isDragging,
       'is-undraggable': !this.props.isDraggable,
-      'is-placeholder': this.props._isPlaceholder
+      'is-placeholder': this.props._isPlaceholder,
+      this.props.classes
     });
     return React.cloneElement(
       this.props._isPlaceholder && this.getPlaceholderContent && Object.prototype.toString.call(this.getPlaceholderContent) === '[object Function]'
@@ -65,7 +67,7 @@ module.exports = {
       className: classNames,
       style: this.props.sortableStyle,
       key: this.props.sortableIndex,
-      onMouseDown: this.handleSortableItemMouseDown,
+      onMouseDown: this.handleSortableItemMouseDown.bind(this),
       onMouseUp: this.handleSortableItemMouseUp
     });
   }
